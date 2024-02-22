@@ -1,0 +1,134 @@
+<div class="main flex align-center justify-center">
+    <div>
+        <div class="details-card mb-4">
+
+            <div class="flex items-center mb-4 mt-4">
+                <h5 class=" h5-text font-semibold">Current {{companyName.charAt(0).toUpperCase()+companyName.slice(1)}}
+                    Offers</h5>
+            </div>
+            <div class="card-container-top">
+                <div class="flex justify-between items-center px-8 py-2 text-sm font-medium details-card-row1">
+                    <p class="m-0">Opening times and contact</p>
+                    <p class="text-white p-1 bg-green-800 rounded-xl"> now opened</p>
+                </div>
+                <div class="grid grid-cols-3 gap-3 details-card-row2 px-8 py-4">
+                    <p class="font-semibold text-base">Closes at 8pm</p>
+                    <p>Tel.: 052 - 6402020</p>
+                    <a href="#">Web: www.{{companyName}}.com</a>
+                    <p>Distance: 6.91 km away from your current location</p>
+                </div>
+                <div class="px-8 py-2 flex">
+                    <div>
+                    <p class="p-text font-bold text-sm">Different opening times:</p>
+                    <p>Opening times are consultation times for the hotline</p>
+               </div>
+               <div class="ml-12">
+                <p class="p-text font-bold text-sm">Location:</p>
+                <div *ngFor="let companyBrochure of companyBrochures; let i = index" class="flex justify-center">
+                    <div *ngIf="companyBrochure.id === brochure?.id" class="flex flex-col">
+                      <a> {{getFormattedAddress(i)}}</a>
+                    </div> </div></div>
+                </div>
+            </div>
+            <div class="card-container-bottom bg-white mb-1 p-10 grid grid-cols-2 gap-1">
+                <div class="flex flex-col justify-center items-start">
+                    <div class="flex items-center justify-center">
+                        <img *ngIf="thumbnailUrl" class="my-4 mx-1 overflow-hidden rounded-md" [src]="thumbnailUrl"
+                            alt="Pdf Thumbnail" width=200px height=200px />
+                        <img *ngIf="thumbnailUrl1" class="my-4 mx-1 overflow-hidden rounded-md" [src]="thumbnailUrl1"
+                            alt="Pdf Thumbnail" width=200px height=200px />
+                    </div>
+                    <app-button color="#077" label="BROWSE THROUGH THE BROCHURE" textColor="white"
+                        route="details/{{brochure?.id}}"></app-button>
+                </div>
+                <div class="flex flex-row items-start">
+                    <ul class="underline font-semibold">
+                        <li class="flex items-center py-4"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                                width="10"
+                                viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                <path
+                                    d="M3.4 81.7c-7.9 15.8-1.5 35 14.3 42.9L280.5 256 17.7 387.4C1.9 395.3-4.5 414.5 3.4 430.3s27.1 22.2 42.9 14.3l320-160c10.8-5.4 17.7-16.5 17.7-28.6s-6.8-23.2-17.7-28.6l-320-160c-15.8-7.9-35-1.5-42.9 14.3z" />
+                            </svg><a href="#">Map & Route</a></li>
+                        <li class="flex items-center py-4"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                                width="10"
+                                viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                <path
+                                    d="M3.4 81.7c-7.9 15.8-1.5 35 14.3 42.9L280.5 256 17.7 387.4C1.9 395.3-4.5 414.5 3.4 430.3s27.1 22.2 42.9 14.3l320-160c10.8-5.4 17.7-16.5 17.7-28.6s-6.8-23.2-17.7-28.6l-320-160c-15.8-7.9-35-1.5-42.9 14.3z" />
+                            </svg><a href="#">Current {{companyName.charAt(0).toUpperCase()+companyName.slice(1)}}
+                                brochures</a></li>
+                        <li class="flex items-center py-4"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                                width="10"
+                                viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                <path
+                                    d="M3.4 81.7c-7.9 15.8-1.5 35 14.3 42.9L280.5 256 17.7 387.4C1.9 395.3-4.5 414.5 3.4 430.3s27.1 22.2 42.9 14.3l320-160c10.8-5.4 17.7-16.5 17.7-28.6s-6.8-23.2-17.7-28.6l-320-160c-15.8-7.9-35-1.5-42.9 14.3z" />
+                            </svg><a href="#">All {{companyName.charAt(0).toUpperCase()+companyName.slice(1)}}
+                                Branches</a></li>
+                        <li class="flex items-center py-4"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                                width="10"
+                                viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                <path
+                                    d="M3.4 81.7c-7.9 15.8-1.5 35 14.3 42.9L280.5 256 17.7 387.4C1.9 395.3-4.5 414.5 3.4 430.3s27.1 22.2 42.9 14.3l320-160c10.8-5.4 17.7-16.5 17.7-28.6s-6.8-23.2-17.7-28.6l-320-160c-15.8-7.9-35-1.5-42.9 14.3z" />
+                            </svg><a href="details/{{brochure?.id}}">Open brochure</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="offers mt-16 mb-4">
+            <h5 class="h5-text">Current offers at {{companyName.charAt(0).toUpperCase()+companyName.slice(1)}}</h5>
+        <ul class="w-full">
+            <li style="margin-bottom: 10px " *ngFor="let companyBrochure of companyBrochures; let i = index">
+            <hr class="w-full">
+              <div class="flex">
+                <app-brochure [brochure]="companyBrochure"></app-brochure>
+                <p class="text-base"><a href="#">Location: 
+                    {{ getFormattedAddress(i) }}</a></p>
+                </div>
+            </li>
+          </ul>
+          
+        </div>
+    </div>
+    <section class="pl-10">
+        <h5 class="h5-section">Other {{companyName.charAt(0).toUpperCase()+companyName.slice(1)}} branches</h5>
+        <ul>
+            <li style="width: 200px; margin-bottom: 10px" *ngFor="let companyBrochure of companyBrochures; let i = index">
+              <div class="flex">
+                <p class="text-base"><a href="#">Location: 
+                    {{ getFormattedAddress(i) }}</a></p>
+                </div>
+            </li>
+          </ul>
+        <h5 class="h5-section">Related Links</h5>
+        <div class="flex flex-row items-start">
+            <ul class="underline font-semibold">
+                <li class="flex items-center py-4"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                        width="10"
+                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                        <path
+                            d="M3.4 81.7c-7.9 15.8-1.5 35 14.3 42.9L280.5 256 17.7 387.4C1.9 395.3-4.5 414.5 3.4 430.3s27.1 22.2 42.9 14.3l320-160c10.8-5.4 17.7-16.5 17.7-28.6s-6.8-23.2-17.7-28.6l-320-160c-15.8-7.9-35-1.5-42.9 14.3z" />
+                    </svg><a href="#">Map & Route</a></li>
+                <li class="flex items-center py-4"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                        width="10"
+                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                        <path
+                            d="M3.4 81.7c-7.9 15.8-1.5 35 14.3 42.9L280.5 256 17.7 387.4C1.9 395.3-4.5 414.5 3.4 430.3s27.1 22.2 42.9 14.3l320-160c10.8-5.4 17.7-16.5 17.7-28.6s-6.8-23.2-17.7-28.6l-320-160c-15.8-7.9-35-1.5-42.9 14.3z" />
+                    </svg><a href="#">Current {{companyName.charAt(0).toUpperCase()+companyName.slice(1)}}
+                        brochures</a></li>
+                <li class="flex items-center py-4"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                        width="10"
+                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                        <path
+                            d="M3.4 81.7c-7.9 15.8-1.5 35 14.3 42.9L280.5 256 17.7 387.4C1.9 395.3-4.5 414.5 3.4 430.3s27.1 22.2 42.9 14.3l320-160c10.8-5.4 17.7-16.5 17.7-28.6s-6.8-23.2-17.7-28.6l-320-160c-15.8-7.9-35-1.5-42.9 14.3z" />
+                    </svg><a href="#">All {{companyName.charAt(0).toUpperCase()+companyName.slice(1)}}
+                        Branches</a></li>
+                <li class="flex items-center py-4"><svg xmlns="http://www.w3.org/2000/svg" height="10"
+                        width="10"
+                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                        <path
+                            d="M3.4 81.7c-7.9 15.8-1.5 35 14.3 42.9L280.5 256 17.7 387.4C1.9 395.3-4.5 414.5 3.4 430.3s27.1 22.2 42.9 14.3l320-160c10.8-5.4 17.7-16.5 17.7-28.6s-6.8-23.2-17.7-28.6l-320-160c-15.8-7.9-35-1.5-42.9 14.3z" />
+                    </svg><a href="details/{{brochure?.id}}">Open brochure</a></li>
+            </ul>
+        </div>
+
+    </section>
+</div>

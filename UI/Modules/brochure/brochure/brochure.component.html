@@ -1,0 +1,24 @@
+<div
+    class="bg-white rounded-md shadow-lg flex flex-wrap cursor-pointer text-center w-52"
+    rounded-md
+    (click)="navigateToDetailsPage(brochure?.id)"
+    
+>
+    <div class="flex flex-wrap m-4 mx-4 height" style="height: 250px" >
+        <img
+        
+            *ngIf="thumbnailUrl"
+            class="overflow-hidden rounded-md"
+            [src]="thumbnailUrl"
+            alt="Pdf Thumbnail"
+        />
+    </div>
+
+    <h2 class="w-full text-lg">{{ brochure?.title }}</h2>
+    <p class="text-gray-600 text-sm w-full py-2">
+        Valid until {{ brochure?.expiryDate | date: 'yyyy-MM-dd' }}
+    </p>
+    <div class="w-full">
+        <button style="width: 100%; background-color: #077; color: white; height: 40px" (click)="navigateToCardPage(brochure?.id)">TO THE BROCHURE</button>
+    </div>
+</div>

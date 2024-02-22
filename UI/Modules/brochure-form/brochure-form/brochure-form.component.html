@@ -1,0 +1,133 @@
+<mat-card>
+    <div class="submit-container">
+        <div class="submit-content">
+            <p class="title">Add new brochure</p>
+            <form
+                class="full-width-form"
+                [formGroup]="brochureForm"
+                (ngSubmit)="submitData()"
+            >
+                <mat-form-field class="full-width">
+                    <mat-label>Title</mat-label>
+                    <input matInput type="text" formControlName="Title" />
+                    <mat-error
+                        *ngIf="
+                            brochureForm.controls['Title'].hasError('required')
+                        "
+                        >title is required</mat-error
+                    >
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Start Date</mat-label>
+                    <input
+                        matInput
+                        [matDatepicker]="startDatePicker"
+                        formControlName="StartDate"
+                    />
+                    <mat-datepicker-toggle
+                        matSuffix
+                        [for]="startDatePicker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                    <mat-error
+                        *ngIf="
+                            brochureForm.controls['StartDate'].hasError(
+                                'required'
+                            )
+                        "
+                        >StartDate is required</mat-error
+                    >
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Expiry Date</mat-label>
+                    <input
+                        matInput
+                        [matDatepicker]="expirydate"
+                        formControlName="ExpiryDate"
+                    />
+                    <mat-datepicker-toggle
+                        matSuffix
+                        [for]="expirydate"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #expirydate></mat-datepicker>
+                    <mat-error
+                        *ngIf="
+                            brochureForm.controls['ExpiryDate'].hasError(
+                                'required'
+                            )
+                        "
+                        >Expiry is required</mat-error
+                    >
+                    <mat-error
+                        *ngIf="
+                            brochureForm.hasError(
+                                'dateComparison',
+                                'ExpiryDate'
+                            )
+                        "
+                    >
+                        Expiry Date must be after Start Date
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Select a pdf file</mat-label>
+                    <button type="button" matPrefix (click)="f_input.click()">
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                    <input type="text" readonly matInput [formControl]="File" />
+                    <input
+                        type="file"
+                        multiple
+                        hidden
+                        #f_input
+                        (change)="handleFileInputChange(f_input.files)"
+                    />
+                    <mat-error
+                        *ngIf="
+                            brochureForm.controls['File'].hasError('required')
+                        "
+                        >File is required</mat-error
+                    >
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Select branch</mat-label>
+                    <mat-select
+                        formControlName="AddressId"
+                        (selectionChange)="setSelectedBranch($event.value)"
+                    >
+                        <mat-option
+                            *ngFor="let branch of branchAddresses"
+                            [value]="branch.addressId"
+                        >
+                            {{ branch.companyAddress }}, {{ branch.city }},
+                            {{ branch.region }},
+                            {{ branch.postalCode }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="
+                            brochureForm.controls['AddressId'].hasError(
+                                'required'
+                            )
+                        "
+                        >Address is required</mat-error
+                    >
+                </mat-form-field>
+                <a href="address-form" class="text-blue-900 font-bold mx-2 mb-4"
+                    >Add a branch</a
+                >
+                <div class="submit-button" style="margin-top: 15px">
+                    <app-button
+                        textColor=" white "
+                        color="#077"
+                        label="Submit"
+                    ></app-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-card>

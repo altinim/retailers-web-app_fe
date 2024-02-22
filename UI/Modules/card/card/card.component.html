@@ -1,0 +1,38 @@
+<div class="bg-gray-200 main flex flex-row items-center justify-center h-full">
+    <div class="pt-16 pb-16 pl-16 pr-4">
+        <div class="h-full mb-4">
+            <h5 class="h5-text text-2xl">Information about the prospectus</h5>
+            <div class="block max-w-sm p-4 mt-4 bg-white border rounded-sm shadow shadow-slate-500">
+                <h5 class=" text-gray-900 font-normal h5-text">{{ selectedBrochure?.title?.toUpperCase()}}</h5>
+                <p class="font-normal text-gray-700 mt-2">Valid until {{ selectedBrochure?.expiryDate | date: 'yyyy-MM-dd' }}</p>
+            </div>
+        </div>
+        <h5 class="text-gray-900 h5-text text-2xl ">Next branch</h5>
+        <div class="flex h-full my-4">
+            <a routerLink="/detail-page/{{selectedBrochure?.id}}" class="flex-1 bg-white borderrounded-sm shadow shadow-slate-500 flex items-center">
+                <div class="flex p-4">
+                    <div class="flex-1">
+                        <h5 class="text-gray-900 font-normal h5-text">{{selectedBrochure?.address}}</h5>
+                        <p class="font-normal text-gray-700 mt-2">Valid from {{selectedBrochure?.startDate | date: 'yyyy-MM-dd' }} until {{selectedBrochure?.expiryDate | date: 'yyyy-MM-dd'}}</p>
+                        <p> Adresa: {{ brochureAddress?.companyAddress }},
+                            {{ brochureAddress?.city }},
+                            {{ brochureAddress?.region }},
+                            {{ brochureAddress?.postalCode }}</p>
+                    </div>
+                </div>
+                <svg width="40" height="40" viewBox="0 0 24 24" class="house-icon items-center h-full p-1">
+                    <path fill="#fff" d="M12,18H6V14H12M21,14V12L20,7H4L3,12V14H4V20H14V14H18V20H20V14M20,4H4V6H20V4Z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <img
+        *ngIf="thumbnailUrl"
+        class="m-4 mx-4 overflow-hidden rounded-md"
+        [src]="thumbnailUrl"
+        alt="Pdf Thumbnail"
+        width= 500px
+        height= 500px
+    />
+</div>

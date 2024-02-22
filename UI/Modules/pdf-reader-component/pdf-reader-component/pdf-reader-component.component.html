@@ -1,0 +1,150 @@
+<div
+    class="og-component-slider"
+    style="
+        height: 800px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    "
+>
+    <div
+        *ngIf="imageUrl && currentIndex === 0"
+        class="image"
+        style="height: 100%; margin: 0 auto"
+    >
+        <img
+            [src]="imageUrl"
+            alt="Thumbnail Image"
+            height="100%"
+            style="height: 100%"
+        />
+    </div>
+    <div
+        *ngIf="imageUrl && currentIndex === base64Content.length - 1"
+        class="image"
+        style="height: 100%; margin: 0 auto"
+    >
+        <img
+            [src]="'data:image/png;base64,' + base64Content[currentIndex]"
+            alt="Thumbnail Image"
+            width="350"
+            height="100%"
+            style="height: 100%"
+        />
+    </div>
+    <div
+        *ngIf="
+            imageUrl &&
+            currentIndex > 0 &&
+            currentIndex < base64Content.length - 1
+        "
+        class="image-group"
+        style="height: 100%; margin: 0 auto; display: flex"
+    >
+        <div class="image" style="height: 100%; margin-right: 10px">
+            <img
+                [src]="'data:image/png;base64,' + base64Content[currentIndex]"
+                alt="Thumbnail Image"
+                width="350"
+                height="100%"
+                style="height: 100%"
+            />
+        </div>
+        <div class="image" style="height: 100%">
+            <img
+                [src]="
+                    'data:image/png;base64,' + base64Content[currentIndex + 1]
+                "
+                alt="Thumbnail Image"
+                width="350"
+                height="100%"
+                style="height: 100%"
+            />
+        </div>
+    </div>
+    <nav
+        class="og-navigation-top"
+        style="
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 50%;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        "
+    >
+        <div
+            class="og-is-left"
+            (click)="prevImage()"
+            [style.pointer-events]="currentIndex === 0 ? 'none' : 'auto'"
+            style="
+                width: 50px;
+                height: 50px;
+                background-color: white;
+                border-radius: 50px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            "
+        >
+            <svg
+                class="svg-icon"
+                style="
+                    width: 4em;
+                    height: 4em;
+                    vertical-align: middle;
+                    fill: currentColor;
+                    overflow: hidden;
+                "
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M407.59854499 303.243636L605.090909 500.689455 407.598545 698.18181801l-32.907636-32.90763601 164.584727-164.584727-164.584727-164.538182z"
+                    transform="rotate(180, 512, 512)"
+                />
+            </svg>
+        </div>
+        <div
+            class="og-is-right"
+            (click)="nextImage()"
+            [style.pointer-events]="
+                currentIndex === base64Content.length - 1 ? 'none' : 'auto'
+            "
+            style="
+                width: 50px;
+                height: 50px;
+                background-color: white;
+                border-radius: 50px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+                margin-right: 2px;
+                cursor: pointer;
+            "
+        >
+            <svg
+                class="svg-icon"
+                style="
+                    width: 5em;
+                    height: 4em;
+                    vertical-align: middle;
+                    fill: currentColor;
+                    overflow: hidden;
+                "
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M407.59854499 303.243636L605.090909 500.689455 407.598545 698.18181801l-32.907636-32.90763601 164.584727-164.584727-164.584727-164.538182z"
+                />
+            </svg>
+        </div>
+    </nav>
+</div>
+
+<div class="flex justify-center m-4 text-2xl">
+    {{ currentIndex +1 }} /{{ this.base64Content.length  }}
+</div>

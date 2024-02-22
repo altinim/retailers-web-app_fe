@@ -1,0 +1,10 @@
+<mat-tab-group>
+    <mat-tab label="Users" color="red">
+        <div>
+            <app-company-table [IsApproved]="true"></app-company-table>
+        </div>
+    </mat-tab>
+    <mat-tab label="Waiting for approval"
+        ><app-company-table [IsApproved]="false"></app-company-table
+    ></mat-tab>
+</mat-tab-group>

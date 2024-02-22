@@ -1,0 +1,5 @@
+<button [ngStyle]="{ 'background-color': color, 'color': textColor, 'width': '100%' }" (click)="handleClick()">
+  {{ label }}
+  <span *ngIf="extraText">{{ extraText }}</span>
+</button>
+

@@ -1,0 +1,66 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+.login-container { 
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-content{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: bold   ;
+    text-align: center;
+    margin-bottom: 16px;
+}
+.title-intro{
+    font-size: 24px;
+    font-weight: bold   ;
+    text-align: center;
+}
+
+.forgot-label{
+    font-size: 16px;
+    color: #0152d5;
+    text-align: center;
+    margin-top: 20px;
+}
+.alternative{
+    font-weight: 500;
+    margin-top: 16px;
+    text-align: center;
+}
+.alternative span { 
+    color: #0152d5;
+}
+.or-line-divider{
+    border-top: 1px solid black;
+    position: relative;
+    margin-top: 40px;
+}
+.or-line-divider p{
+    position: absolute;
+    /* background-color: rgb(243 244 246); */
+    background-color: white;
+    width: 50px;
+    transform: translateY(-50%, -50%);
+    text-align: center;
+    left: 50%;
+    top: -10px;
+}
+.google-card{
+    margin-top:20px;
+}
+
+.full-width-form {
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}

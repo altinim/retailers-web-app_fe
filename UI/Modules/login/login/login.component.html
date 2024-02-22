@@ -1,0 +1,37 @@
+<mat-card>
+    <div class="login-container">
+        <div class="login-content">
+            <p class="title">Login</p>
+            <p class="title">Welcome to Profital!</p>
+
+            <form class="full-width-form" [formGroup]="loginform" (ngSubmit)="proceedlogin()" >
+                <mat-form-field class="full-width">
+                    <mat-label>Email *</mat-label>
+                    <input matInput type="text" formControlName="email">
+                    <mat-error *ngIf="loginform.controls['email'].hasError('required')">email is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" >
+                    <mat-label>Password *</mat-label>
+                    <input matInput [type]="hidden ? 'password' : 'text'" formControlName="password">
+                    <mat-icon (click)="hidden=!hidden" matSuffix>{{ hidden ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="loginform.controls['password'].hasError('required')">password should contain at least 6 characters</mat-error>
+                </mat-form-field>
+
+                <div class="login-button" style="margin-top: 10px;">
+                    <app-button color="rgb(13 148 136)" label="Log in" textColor="white" ngSu></app-button>
+                </div>
+
+                <p class="forgot-label">Forgot password </p>
+
+                <p class="alternative">Don't have an account? <span> <a routerLink='/signup'>Signup</a></span></p>
+                <div class="or-line-divider">
+                    <p>or</p>
+                </div>
+                <div class="google-card">
+                    <app-google-card></app-google-card>
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-card>

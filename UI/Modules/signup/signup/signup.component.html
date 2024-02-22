@@ -1,0 +1,54 @@
+<mat-card>
+    <div class="signup-container">
+        <div class="signup-content">
+            <p class="title">Signup</p>
+            <p class="title">Welcome to Profital!</p>
+
+
+            <form class="full-width" [formGroup]="signupform" (ngSubmit)="proceedsignup()">
+
+                <mat-form-field class="full-width">
+                    <mat-label>Name *</mat-label>
+                    <input matInput type="text" formControlName="Name">
+                    <mat-error *ngIf="signupform.controls['Name'].hasError('required')">name is required</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="full-width">
+                    <mat-label>CompanyName *</mat-label>
+                    <input matInput type="text" formControlName="CompanyName">
+                    <mat-error *ngIf="signupform.controls['CompanyName'].hasError('required')">CompanyNameis
+                        required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Email *</mat-label>
+                    <input matInput type="email" formControlName="Email">
+                    <mat-error *ngIf="signupform.controls['Email'].hasError('required')">email is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Password *</mat-label>
+                    <input matInput [type]="hidden ? 'password' : 'text'" formControlName="Password">
+                    <mat-icon (click)="hidden=!hidden" matSuffix>{{ hidden ? 'visibility_off' :
+                        'visibility'}}</mat-icon>
+                    <mat-error *ngIf="signupform.controls['Password'].hasError('required')">password should contain at
+                        least 6 characters</mat-error>
+                </mat-form-field>
+
+                <div class="signup-button" style="margin-top: 10px;">
+                    <app-button color="#077" label="Sign up" textColor="white"></app-button>
+                </div>
+
+                <p class="alternative">Already have an account? <span> <a routerLink='/login'>Login </a></span></p>
+
+                <div class="or-line-divider">
+                    <p>or</p>
+                </div>
+                <div class="google-card">
+                    <app-google-card></app-google-card>
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-card>

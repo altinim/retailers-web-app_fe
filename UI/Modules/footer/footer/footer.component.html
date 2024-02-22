@@ -1,0 +1,27 @@
+<footer class="w-full overflow-visible h-96 py-8 bg-teal-600">
+    <div class="mx-80">
+        <div class="">
+            <h1 class="text-white">
+                Download our <strong>Profital</strong> app now:
+            </h1>
+            <ul class="text-white text-lg">
+                <li>All actions in one app</li>
+                <li>With one click in the online shop</li>
+                <li>Notifications for new brochures</li>
+                <li>Save up to 70%</li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<div>
+    <ul
+        class="flex justify-center gap-16 min-h-24 items-center text-lg bg-white w-full"
+    >
+        <li><a href="">Profital</a></li>
+        <li><a href="">Imprint</a></li>
+        <li><a href="">TERMS</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li *ngIf="isAuthTokenPresent()" ><a href="#" routerLink="login">For Retailers</a></li>
+    </ul>
+</div>

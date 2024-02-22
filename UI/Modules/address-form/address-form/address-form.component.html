@@ -1,0 +1,50 @@
+<mat-card>
+    <div class="address-container">
+        <div class="address-content">
+            <p class="title">Add a new Address</p>
+
+            <form class="full-width" [formGroup]="addressform" (ngSubmit)="submit()">
+                <mat-form-field class="full-width">
+                    <mat-label>Select a City *</mat-label>
+                    <mat-select formControlName="City">
+                        <mat-option *ngFor="let city of kosovoCities" [value]="city">
+                            {{ city }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="addressform.controls['City'].hasError('required')">City is required</mat-error>
+                </mat-form-field >
+
+                <mat-form-field class="full-width">
+                    <mat-label>Select a Region *</mat-label>
+                    <mat-select formControlName="Region">
+                        <mat-option *ngFor="let region of kosovoRegions" [value]="region">
+                            {{ region }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="addressform.controls['Region'].hasError('required')">Region is required</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="full-width">
+                    <mat-label>CompanyAddress *</mat-label>
+                    <input matInput type="text" formControlName="CompanyAddress">
+                    <mat-error *ngIf="addressform.controls['CompanyAddress'].hasError('required')">CompanyAddress is
+                        required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Postal Code *</mat-label>
+                    <input matInput type="text" formControlName="PostalCode">
+                    <mat-error *ngIf="addressform.controls['PostalCode'].hasError('required')">PostalCode is
+                        required</mat-error>
+                </mat-form-field>
+
+                <div class="signup-button" style="margin-top: 10px;">
+                    <app-button color="#077" label="Submit " textColor="white"></app-button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</mat-card>

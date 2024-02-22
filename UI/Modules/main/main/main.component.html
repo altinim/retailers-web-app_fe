@@ -1,0 +1,12 @@
+
+<main class="py-16 mx-80">
+
+    <h1 class="text-2xl text-gray-700 py-4">The best brochures</h1>
+    <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4"
+    >
+        <div *ngFor="let brochure of brochures" class="col-span-1 main-w-0">
+            <app-brochure [brochure]="brochure"></app-brochure>
+        </div>
+    </div>
+</main>

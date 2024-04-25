@@ -83,6 +83,8 @@ export class BrochureService {
     getBrochuresByCompanyId(companyId: number): Observable<any> {
         return this.apiService.get(`getCompanyBrochures/${companyId}`);
     }
+
+
     getCompanyNameByBrochureId(brochureId: number): Observable<string> {
         return this.apiService.getPlainText<string>(
             `${this.brochureEndpoint}/companyName?brochureId=${brochureId}`
@@ -98,7 +100,7 @@ export interface Brochure {
     expiryDate: Date;
     path?: string;
     companyId?: string;
-    company?: any; 
+    company?: any;
     addressId?: number;
-    address?: any; 
+    address?: any;
 }
